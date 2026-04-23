@@ -13,7 +13,6 @@ export default function Navbar() {
 
   const links = [
     { href: '/', label: t('nav.listings') },
-    { href: '/post', label: t('nav.post') },
   ]
 
   return (
@@ -85,6 +84,13 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+          <Link
+            href="/post"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 rounded-md text-sm font-semibold bg-blue-600 text-white text-center"
+          >
+            {t('nav.post')}
+          </Link>
         </div>
       )}
     </nav>
