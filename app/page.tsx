@@ -5,16 +5,16 @@ import { useTranslation } from '@/i18n/useTranslation'
 import PropertyGrid from '@/components/listings/PropertyGrid'
 
 const STATIONS = [
-  { name: 'La Défense',     photo: 'https://source.unsplash.com/80x80/?la-defense-paris-towers' },
-  { name: 'Étoile',         photo: 'https://source.unsplash.com/80x80/?arc-de-triomphe' },
-  { name: 'Concorde',       photo: 'https://source.unsplash.com/80x80/?place-de-la-concorde-obelisk' },
-  { name: 'Louvre',         photo: 'https://source.unsplash.com/80x80/?louvre-pyramid-paris' },
-  { name: 'Châtelet',       photo: 'https://source.unsplash.com/80x80/?chatelet-paris-theatre' },
-  { name: 'Hôtel de Ville', photo: 'https://source.unsplash.com/80x80/?paris-city-hall' },
-  { name: 'Bastille',       photo: 'https://source.unsplash.com/80x80/?place-de-la-bastille-paris' },
-  { name: 'Gare de Lyon',   photo: 'https://source.unsplash.com/80x80/?gare-de-lyon-clock-tower' },
-  { name: 'Nation',         photo: 'https://source.unsplash.com/80x80/?place-de-la-nation-paris' },
-  { name: 'Vincennes',      photo: 'https://source.unsplash.com/80x80/?chateau-de-vincennes' },
+  { name: 'La Défense',     photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/La_D%C3%A9fense_Collage.jpg/120px-La_D%C3%A9fense_Collage.jpg' },
+  { name: 'Étoile',         photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Arc_de_Triomphe%2C_Paris_21_October_2010.jpg/120px-Arc_de_Triomphe%2C_Paris_21_October_2010.jpg' },
+  { name: 'Concorde',       photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Paris_place_concorde.jpg/120px-Paris_place_concorde.jpg' },
+  { name: 'Louvre',         photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Louvre_Museum_Wikimedia_Commons.jpg/120px-Louvre_Museum_Wikimedia_Commons.jpg' },
+  { name: 'Châtelet',       photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet.jpg/120px-Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet.jpg' },
+  { name: 'Hôtel de Ville', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/H%C3%B4tel_de_Ville_de_Paris_2021.jpg/120px-H%C3%B4tel_de_Ville_de_Paris_2021.jpg' },
+  { name: 'Bastille',       photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Colonne_de_Juillet%2C_Place_de_la_Bastille%2C_Paris_2011.jpg/120px-Colonne_de_Juillet%2C_Place_de_la_Bastille%2C_Paris_2011.jpg' },
+  { name: 'Gare de Lyon',   photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Gare_de_Lyon_-_facade.jpg/120px-Gare_de_Lyon_-_facade.jpg' },
+  { name: 'Nation',         photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Place_de_la_Nation_-_Triomphe_de_la_R%C3%A9publique.jpg/120px-Place_de_la_Nation_-_Triomphe_de_la_R%C3%A9publique.jpg' },
+  { name: 'Vincennes',      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chateau_de_Vincennes_-_20060429.jpg/120px-Chateau_de_Vincennes_-_20060429.jpg' },
 ]
 
 export default function HomePage() {
