@@ -4,17 +4,20 @@ import Link from 'next/link'
 import { useTranslation } from '@/i18n/useTranslation'
 import PropertyGrid from '@/components/listings/PropertyGrid'
 
+const BASE = 'https://images.unsplash.com/photo-'
+const CROP = '?w=80&h=80&fit=crop&auto=format&q=60'
+
 const STATIONS = [
-  { name: 'La Défense', icon: '🏢' },
-  { name: 'Étoile',     icon: '🏛️' },
-  { name: 'Concorde',   icon: '🗿' },
-  { name: 'Louvre',     icon: '🔺' },
-  { name: 'Châtelet',   icon: '🎭' },
-  { name: 'Hôtel de Ville', icon: '🏛️' },
-  { name: 'Bastille',   icon: '🗽' },
-  { name: 'Gare de Lyon', icon: '🕰️' },
-  { name: 'Nation',     icon: '🦁' },
-  { name: 'Vincennes',  icon: '🏰' },
+  { name: 'La Défense',     photo: `${BASE}1558618666-fcd25c85cd64${CROP}` },
+  { name: 'Étoile',         photo: `${BASE}1499856871958-5b9627545d1a${CROP}` },
+  { name: 'Concorde',       photo: `${BASE}1502602898657-3e91760cbb34${CROP}` },
+  { name: 'Louvre',         photo: `${BASE}1499428665502-503f6c608263${CROP}` },
+  { name: 'Châtelet',       photo: `${BASE}1506905925346-21bda4d32df4${CROP}` },
+  { name: 'Hôtel de Ville', photo: `${BASE}1591370874773-6702e8f12fd8${CROP}` },
+  { name: 'Bastille',       photo: `${BASE}1568495248636-6432b97bd949${CROP}` },
+  { name: 'Gare de Lyon',   photo: `${BASE}1544620347-c4fd4a3d5957${CROP}` },
+  { name: 'Nation',         photo: `${BASE}1549144511-f099e773c147${CROP}` },
+  { name: 'Vincennes',      photo: `${BASE}1570197788417-0e82375c9371${CROP}` },
 ]
 
 export default function HomePage() {
@@ -62,9 +65,14 @@ export default function HomePage() {
                 <div key={s.name} className="flex items-end">
                   {/* Station column */}
                   <div className="flex flex-col items-center w-16 sm:w-20">
-                    <span className="text-xl sm:text-2xl mb-1 leading-none" role="img" aria-label={s.name}>
-                      {s.icon}
-                    </span>
+                    <img
+                      src={s.photo}
+                      alt={s.name}
+                      width={36}
+                      height={36}
+                      className="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm mb-1"
+                      loading="lazy"
+                    />
                     <div className="w-3 h-3 rounded-full bg-yellow-400 border-2 border-blue-700 mb-1" />
                     <span className="text-[9px] sm:text-[10px] text-gray-500 text-center leading-tight whitespace-nowrap">
                       {s.name}
