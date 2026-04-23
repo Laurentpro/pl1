@@ -4,35 +4,48 @@ import Link from 'next/link'
 import { useTranslation } from '@/i18n/useTranslation'
 import PropertyGrid from '@/components/listings/PropertyGrid'
 
+const STATIONS = [
+  { name: 'La Défense', icon: '🏢' },
+  { name: 'Étoile',     icon: '🏛️' },
+  { name: 'Concorde',   icon: '🗿' },
+  { name: 'Louvre',     icon: '🔺' },
+  { name: 'Châtelet',   icon: '🎭' },
+  { name: 'Hôtel de Ville', icon: '🏛️' },
+  { name: 'Bastille',   icon: '🗽' },
+  { name: 'Gare de Lyon', icon: '🕰️' },
+  { name: 'Nation',     icon: '🦁' },
+  { name: 'Vincennes',  icon: '🏰' },
+]
+
 export default function HomePage() {
   const { t } = useTranslation()
 
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white py-16 px-4">
+      {/* Hero — compact so filters are visible above the fold */}
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 text-white py-8 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-            <Train size={15} />
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-medium mb-4">
+            <Train size={14} />
             Métro Ligne 1 · Paris
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black leading-tight mb-4">
-            {t('hero.title')}<br />
+          <h1 className="text-2xl sm:text-4xl font-black leading-tight mb-3">
+            {t('hero.title')}{' '}
             <span className="text-blue-200">{t('hero.titleHighlight')}</span>
           </h1>
-          <p className="text-blue-100 text-base sm:text-lg max-w-xl mx-auto mb-8">
+          <p className="text-blue-100 text-sm sm:text-base max-w-xl mx-auto mb-5">
             {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="#listings"
-              className="px-6 py-3 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-colors"
+              className="px-5 py-2.5 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-colors text-sm"
             >
               {t('hero.cta')}
             </a>
             <Link
               href="/post"
-              className="px-6 py-3 bg-blue-800/50 border border-blue-400 text-white font-semibold rounded-xl hover:bg-blue-800/70 transition-colors"
+              className="px-5 py-2.5 bg-blue-800/50 border border-blue-400 text-white font-semibold rounded-xl hover:bg-blue-800/70 transition-colors text-sm"
             >
               {t('hero.postCta')}
             </Link>
@@ -40,28 +53,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Line 1 stations strip */}
-      <section className="bg-white border-b border-gray-200 py-3 px-4 overflow-x-auto">
-        <div className="flex items-center max-w-7xl mx-auto">
-          <div className="flex items-center gap-0 min-w-max">
-            {[
-              'La Défense','Étoile','Concorde','Louvre','Châtelet',
-              'Hôtel de Ville','Bastille','Gare de Lyon','Nation','Vincennes'
-            ].map((s, i, arr) => (
-              <div key={s} className="flex items-center">
-                <div className="flex flex-col items-center">
-                  <div className="w-3 h-3 rounded-full bg-yellow-400 border-2 border-blue-700" />
-                  <span className="text-[10px] text-gray-500 mt-1 whitespace-nowrap">{s}</span>
+      {/* Metro Line 1 diagram */}
+      <section className="bg-white border-b border-gray-200 py-4 px-4">
+        <div className="overflow-x-auto">
+          <div className="flex justify-center">
+            <div className="flex items-end gap-0 min-w-max px-4">
+              {STATIONS.map((s, i) => (
+                <div key={s.name} className="flex items-end">
+                  {/* Station column */}
+                  <div className="flex flex-col items-center w-16 sm:w-20">
+                    <span className="text-xl sm:text-2xl mb-1 leading-none" role="img" aria-label={s.name}>
+                      {s.icon}
+                    </span>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400 border-2 border-blue-700 mb-1" />
+                    <span className="text-[9px] sm:text-[10px] text-gray-500 text-center leading-tight whitespace-nowrap">
+                      {s.name}
+                    </span>
+                  </div>
+                  {/* Connector line */}
+                  {i < STATIONS.length - 1 && (
+                    <div className="h-1 w-4 sm:w-6 bg-blue-700 mb-[18px] -mx-0.5 flex-none" />
+                  )}
                 </div>
-                {i < arr.length - 1 && <div className="w-8 sm:w-12 h-1 bg-blue-700 -mx-0.5" />}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Listings */}
-      <section id="listings" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <section id="listings" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-xl font-bold text-gray-900 mb-6">{t('listing.title')}</h2>
         <PropertyGrid />
       </section>
