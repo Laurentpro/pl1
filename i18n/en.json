@@ -23,7 +23,12 @@
     "reset": "Reset",
     "station": "Station",
     "type": "Property type",
-    "priceType": "Rent / Sale"
+    "priceType": "Rent / Sale",
+    "walkMax": "Walking distance",
+    "walkAll": "Any distance",
+    "walk5": "≤ 5 min",
+    "walk10": "≤ 10 min",
+    "walk15": "≤ 15 min"
   },
   "listing": {
     "title": "Listings",

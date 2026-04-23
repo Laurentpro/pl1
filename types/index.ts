@@ -47,4 +47,5 @@ export interface PropertyFilters {
   property_type?: PropertyType
   price_type?: PriceType
   furnished?: boolean
+  walk_max?: number
 }

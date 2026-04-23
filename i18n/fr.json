@@ -23,7 +23,12 @@
     "reset": "Réinitialiser",
     "station": "Station",
     "type": "Type de bien",
-    "priceType": "Location / Vente"
+    "priceType": "Location / Vente",
+    "walkMax": "Distance à pied",
+    "walkAll": "Toutes distances",
+    "walk5": "≤ 5 min",
+    "walk10": "≤ 10 min",
+    "walk15": "≤ 15 min"
   },
   "listing": {
     "title": "Annonces",

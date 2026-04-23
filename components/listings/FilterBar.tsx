@@ -30,7 +30,7 @@ export default function FilterBar({ filters, onChange }: Props) {
         {t('filter.title')}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
         {/* Station */}
         <div>
           <label className="block text-xs font-medium text-gray-500 mb-1">{t('filter.station')}</label>
@@ -88,6 +88,21 @@ export default function FilterBar({ filters, onChange }: Props) {
             onChange={e => setLocal({ ...local, price_max: e.target.value ? Number(e.target.value) : undefined })}
             className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+        </div>
+
+        {/* Walking distance */}
+        <div>
+          <label className="block text-xs font-medium text-gray-500 mb-1">{t('filter.walkMax')}</label>
+          <select
+            value={local.walk_max ?? ''}
+            onChange={e => setLocal({ ...local, walk_max: e.target.value ? Number(e.target.value) : undefined })}
+            className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+          >
+            <option value="">{t('filter.walkAll')}</option>
+            <option value="5">{t('filter.walk5')}</option>
+            <option value="10">{t('filter.walk10')}</option>
+            <option value="15">{t('filter.walk15')}</option>
+          </select>
         </div>
       </div>
 

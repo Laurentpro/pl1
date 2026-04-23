@@ -43,6 +43,9 @@ export async function GET(req: NextRequest) {
   const furnished = searchParams.get('furnished')
   if (furnished === 'true') query = query.eq('furnished', true)
 
+  const walk_max = searchParams.get('walk_max')
+  if (walk_max) query = query.lte('walk_minutes', Number(walk_max))
+
   const { data, error } = await query
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

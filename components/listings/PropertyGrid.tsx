@@ -20,6 +20,7 @@ export default function PropertyGrid() {
     if (f.property_type) params.set('property_type', f.property_type)
     if (f.price_type) params.set('price_type', f.price_type)
     if (f.furnished) params.set('furnished', 'true')
+    if (f.walk_max) params.set('walk_max', String(f.walk_max))
 
     const res = await fetch(`/api/properties?${params}`)
     const data = await res.json()
