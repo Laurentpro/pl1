@@ -1,24 +1,37 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Clock, XCircle } from 'lucide-react'
 import { createServerClient } from '@supabase/ssr'
 import ImageGallery from '@/components/detail/ImageGallery'
 import PropertyInfo from '@/components/detail/PropertyInfo'
 import MapEmbed from '@/components/detail/MapEmbed'
 
 async function getProperty(id: string) {
+  // Service role key bypasses RLS so admins can preview pending/rejected listings
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
     { cookies: { getAll: () => [], setAll: () => {} } }
   )
   const { data } = await supabase
     .from('properties')
     .select('*, metro_stations(*)')
     .eq('id', id)
-    .eq('status', 'approved')
     .single()
   return data
+}
+
+const STATUS_BANNER: Record<string, { icon: React.ReactNode; text: string; className: string }> = {
+  pending: {
+    icon: <Clock size={15} />,
+    text: 'Cette annonce est en attente de validation et n\'est pas encore visible du public.',
+    className: 'bg-amber-50 border-amber-200 text-amber-800',
+  },
+  rejected: {
+    icon: <XCircle size={15} />,
+    text: 'Cette annonce a été refusée et n\'est pas visible du public.',
+    className: 'bg-red-50 border-red-200 text-red-800',
+  },
 }
 
 export default async function PropertyDetailPage({
@@ -30,6 +43,8 @@ export default async function PropertyDetailPage({
   const property = await getProperty(id)
   if (!property) notFound()
 
+  const banner = property.status !== 'approved' ? STATUS_BANNER[property.status] : null
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Link
@@ -40,14 +55,18 @@ export default async function PropertyDetailPage({
         Retour aux annonces
       </Link>
 
+      {banner && (
+        <div className={`flex items-center gap-2 px-4 py-3 mb-6 rounded-xl border text-sm font-medium ${banner.className}`}>
+          {banner.icon}
+          {banner.text}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left: gallery + map */}
         <div className="space-y-4">
           <ImageGallery images={property.images ?? []} title={property.title} />
           <MapEmbed lat={property.lat} lng={property.lng} address={property.address} />
         </div>
-
-        {/* Right: info */}
         <div>
           <PropertyInfo property={property} />
         </div>
