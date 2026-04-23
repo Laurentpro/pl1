@@ -4,20 +4,17 @@ import Link from 'next/link'
 import { useTranslation } from '@/i18n/useTranslation'
 import PropertyGrid from '@/components/listings/PropertyGrid'
 
-const BASE = 'https://images.unsplash.com/photo-'
-const CROP = '?w=80&h=80&fit=crop&auto=format&q=60'
-
 const STATIONS = [
-  { name: 'La Défense',     photo: `${BASE}1558618666-fcd25c85cd64${CROP}` },
-  { name: 'Étoile',         photo: `${BASE}1499856871958-5b9627545d1a${CROP}` },
-  { name: 'Concorde',       photo: `${BASE}1502602898657-3e91760cbb34${CROP}` },
-  { name: 'Louvre',         photo: `${BASE}1499428665502-503f6c608263${CROP}` },
-  { name: 'Châtelet',       photo: `${BASE}1506905925346-21bda4d32df4${CROP}` },
-  { name: 'Hôtel de Ville', photo: `${BASE}1591370874773-6702e8f12fd8${CROP}` },
-  { name: 'Bastille',       photo: `${BASE}1568495248636-6432b97bd949${CROP}` },
-  { name: 'Gare de Lyon',   photo: `${BASE}1544620347-c4fd4a3d5957${CROP}` },
-  { name: 'Nation',         photo: `${BASE}1549144511-f099e773c147${CROP}` },
-  { name: 'Vincennes',      photo: `${BASE}1570197788417-0e82375c9371${CROP}` },
+  { name: 'La Défense',     photo: 'https://source.unsplash.com/80x80/?la-defense-paris-towers' },
+  { name: 'Étoile',         photo: 'https://source.unsplash.com/80x80/?arc-de-triomphe' },
+  { name: 'Concorde',       photo: 'https://source.unsplash.com/80x80/?place-de-la-concorde-obelisk' },
+  { name: 'Louvre',         photo: 'https://source.unsplash.com/80x80/?louvre-pyramid-paris' },
+  { name: 'Châtelet',       photo: 'https://source.unsplash.com/80x80/?chatelet-paris-theatre' },
+  { name: 'Hôtel de Ville', photo: 'https://source.unsplash.com/80x80/?paris-city-hall' },
+  { name: 'Bastille',       photo: 'https://source.unsplash.com/80x80/?place-de-la-bastille-paris' },
+  { name: 'Gare de Lyon',   photo: 'https://source.unsplash.com/80x80/?gare-de-lyon-clock-tower' },
+  { name: 'Nation',         photo: 'https://source.unsplash.com/80x80/?place-de-la-nation-paris' },
+  { name: 'Vincennes',      photo: 'https://source.unsplash.com/80x80/?chateau-de-vincennes' },
 ]
 
 export default function HomePage() {
@@ -68,9 +65,10 @@ export default function HomePage() {
                     <img
                       src={s.photo}
                       alt={s.name}
-                      width={36}
-                      height={36}
-                      className="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm mb-1"
+                      width={60}
+                      height={60}
+                      style={{ width: 60, height: 60, borderRadius: '50%', objectFit: 'cover', border: '2px solid #fff', boxShadow: '0 1px 4px rgba(0,0,0,0.15)' }}
+                      className="mb-1"
                       loading="lazy"
                     />
                     <div className="w-3 h-3 rounded-full bg-yellow-400 border-2 border-blue-700 mb-1" />
